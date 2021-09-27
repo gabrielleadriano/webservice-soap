@@ -10,6 +10,7 @@ import javax.jws.soap.SOAPBinding.Style;
 @WebService
 @SOAPBinding(style = Style.RPC)
 public interface AplicativoInterface {
+
 	@WebMethod
 	List<Aplicativo> getAplicativos();
 
@@ -18,10 +19,10 @@ public interface AplicativoInterface {
 
 	@WebMethod
 	Aplicativo postAplicativo(Aplicativo aplicativo);
-
+	
 	@WebMethod
 	Aplicativo updateAplicativo(Aplicativo aplicativo);
-
+	
 	@WebMethod
 	Aplicativo removeAplicativo(int id);
 }

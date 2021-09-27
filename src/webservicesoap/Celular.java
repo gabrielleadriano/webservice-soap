@@ -1,18 +1,30 @@
 package webservicesoap;
 
+import java.util.List;
+
 public class Celular {
-	private int numSerie;
+	private int id;
 	private String modelo;
 	private String sistema;
 	private String cor;
+	private List<Aplicativo> aplicativos;
 
 	private String CAMPO_VAZIO = "O campo não pode estar vazio!";
 
-	public Celular(int numSerie, String modelo, String sistema, String cor) throws Exception {
-		this.numSerie = numSerie;
+	public Celular(int id, String modelo, String sistema, String cor) throws Exception {
+		setId(id);
 		setModelo(modelo);
 		setSistema(sistema);
 		setCor(cor);
+	}
+
+	public void addAplicativo(Aplicativo aplicativo) {
+		if (aplicativo != null)
+			aplicativos.add(aplicativo);
+	}
+
+	public List<Aplicativo> getAplicativos() {
+		return aplicativos;
 	}
 
 	public String getModelo() {
@@ -50,5 +62,9 @@ public class Celular {
 			this.cor = cor;
 		}
 
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 }

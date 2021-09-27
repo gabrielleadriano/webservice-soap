@@ -33,6 +33,23 @@ public class CelularController {
 		celulares.remove(id);
 		return celularRemovido;
 	}
+	
+	public List<Aplicativo> addAplicativo(int celularId, Aplicativo aplicativo){
+		Celular celular = celulares.get(celularId);
+		
+		aplicativo.addCelular(celular);
+		celular.addAplicativo(aplicativo);
+		
+		return celular.getAplicativos();
+	}
+	
+	public List<Aplicativo> removeAplicativo(int celularId, int aplicativoId){
+		Celular celular = celulares.get(celularId);
+		List<Aplicativo> aplicativos = celular.getAplicativos();	
+		
+		aplicativos.remove(aplicativoId);		
+		return celular.getAplicativos();
+	}
 
 	private List<Celular> montaListaCelulares() throws Exception {
 
