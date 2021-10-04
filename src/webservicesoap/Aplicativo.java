@@ -68,10 +68,8 @@ public class Aplicativo{
 	}
 
 	public void setVersao(String versao) throws Exception {
-		if (categoria.isEmpty()) {
+		if (versao.isEmpty()) {
 			throw new Exception(CAMPO_VAZIO);
-		} else if (categoria.matches(".*\\d.*")) {
-			throw new IllegalArgumentException("O campo não pode conter números!");
 		} else {
 			this.versao = versao;
 		}
@@ -79,5 +77,9 @@ public class Aplicativo{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }

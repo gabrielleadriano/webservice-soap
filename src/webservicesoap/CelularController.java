@@ -1,10 +1,14 @@
 package webservicesoap;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CelularController {
+import javax.jws.WebService;
 
-	private List<Celular> celulares;
+@WebService(endpointInterface = "webservicesoap.CelularInterface")
+public class CelularController implements CelularInterface{
+
+	private List<Celular> celulares = new ArrayList<>();;
 
 	public CelularController() throws Exception {
 		montaListaCelulares();
@@ -15,8 +19,13 @@ public class CelularController {
 	}
 
 	public Celular getCelular(int id) {
-		return celulares.get(id);
-	}
+        for(Celular celular : celulares) {
+            if(celular.getId() == id) {
+                return celular;
+            }
+        }
+        return null;
+    }
 
 	public Celular postCelular(Celular celular) {
 		celulares.add(celular);
@@ -29,15 +38,13 @@ public class CelularController {
 	}
 
 	public Celular removeCelular(int id) {
-		Celular celularRemovido = celulares.get(id);
-		celulares.remove(id);
+		Celular celularRemovido = getCelular(id);
+		celulares.remove(celularRemovido);
 		return celularRemovido;
 	}
 	
 	public List<Aplicativo> addAplicativo(int celularId, Aplicativo aplicativo){
 		Celular celular = celulares.get(celularId);
-		
-		aplicativo.addCelular(celular);
 		celular.addAplicativo(aplicativo);
 		
 		return celular.getAplicativos();

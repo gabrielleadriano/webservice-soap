@@ -9,8 +9,29 @@ import javax.jws.soap.SOAPBinding.Style;
 
 @WebService
 @SOAPBinding(style = Style.RPC)
-public interface CelularInterface {
+public interface ServicoSOAPInterface {
 
+	@WebMethod
+	List<Aplicativo> getAplicativos();
+
+	@WebMethod
+	Aplicativo getAplicativo(int id);
+
+	@WebMethod
+	Aplicativo postAplicativo(Aplicativo aplicativo);
+	
+	@WebMethod
+	Aplicativo updateAplicativo(Aplicativo aplicativo);
+	
+	@WebMethod
+	Aplicativo removeAplicativo(int id);
+	
+	@WebMethod
+	List<Celular> addCelular(int aplicativoId, Celular celular);
+	
+	@WebMethod
+	List<Celular> removeCelular(int aplicativoId, int celularId);
+	
 	@WebMethod
 	Celular getCelular(int id);
 	

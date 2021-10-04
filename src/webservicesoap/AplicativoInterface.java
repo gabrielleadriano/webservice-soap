@@ -25,4 +25,10 @@ public interface AplicativoInterface {
 	
 	@WebMethod
 	Aplicativo removeAplicativo(int id);
+	
+	@WebMethod
+	List<Celular> addCelular(int aplicativoId, Celular celular);
+	
+	@WebMethod
+	List<Celular> removeCelular(int aplicativoId, int celularId);
 }
